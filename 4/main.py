@@ -39,7 +39,6 @@ def biggest_palindrome_from_factors_of_size(size):
             if is_a_palindrome(product):
                 if product > largest:
                     largest = product
-                # print "%s=%s*%s"%(product, upper_bound-a, upper_bound-b)
     return largest
 
 if __name__ == "__main__":
