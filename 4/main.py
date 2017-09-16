@@ -13,29 +13,22 @@ def get_digit(num, idx):
     return (num%10**idx - num%10**(idx-1))/10**(idx-1)
 
 def is_a_palindrome(num):
+    print "is_a_palindrome: %s"%num
     digits = num_digits(num)
-    if digits == 1
-        return true
+    print "has %s digits"%digits
+    if digits == 1:
+        return True
     high = get_digit(num, digits)
     low = get_digit(num, 1)
-    if high == low
-        return is_a_palindrome((num - high*10**digits - low)/10)
-    return false
-
-def main(num):
-	maximum = math.sqrt(num)
-
-	factors = []
-	f = 2
-
-	while num != 1:
-		while num % f == 0:
-			factors += [f]
-			num /= f
-		f += 1
-	return max(factors)
+    print "high=%s, low=%s"%(high,low)
+    if high == low:
+        if digits == 2:
+            return True
+        return is_a_palindrome((num - high*10**(digits-1) - low)/10)
+    return False
 
 if __name__ == "__main__":
-	print "f(13195)=%s"%main(13195)	
-	print "f(600851475143)=%s"%main(600851475143)	
-	print "f(%s)=%s"%(sys.argv[1], main(int(sys.argv[1])))
+	print "f(131)=%s"%is_a_palindrome(131)	
+	print "f(123454321)=%s"%is_a_palindrome(123454321)	
+	print "f(1221)=%s"%is_a_palindrome(1221)	
+	print "f(%s)=%s"%(sys.argv[1], is_a_palindrome(int(sys.argv[1])))
